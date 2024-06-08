@@ -5,7 +5,7 @@ sealed class ParticlePosition
 data class ParticlePositionAbsolute(
     val x: Float,
     val y: Float,
-): ParticlePosition()
+) : ParticlePosition()
 
 data object ParticlePositionCenter : ParticlePosition()
 

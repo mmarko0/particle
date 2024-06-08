@@ -21,34 +21,32 @@ import kotlinx.coroutines.withContext
 
 @Composable
 fun ParticleScreen(modifier: Modifier = Modifier) {
-    val radialParticleEmitter = remember { RadialParticleEmitter() }
-    var dt by remember { mutableFloatStateOf(0f) }
-    var previousTime by remember { mutableLongStateOf(System.nanoTime()) }
+  val radialParticleEmitter = remember { RadialParticleEmitter() }
+  var dt by remember { mutableFloatStateOf(0f) }
+  var previousTime by remember { mutableLongStateOf(System.nanoTime()) }
 
-    LaunchedEffect(Unit) {
-        withContext(Dispatchers.Default) {
-            while (true) {
-                withFrameNanos {
-                    dt = ((it - previousTime) / 1E7).toFloat()
-                    previousTime = it
-                }
-            }
+  LaunchedEffect(Unit) {
+    withContext(Dispatchers.Default) {
+      while (true) {
+        withFrameNanos {
+          dt = ((it - previousTime) / 1E7).toFloat()
+          previousTime = it
         }
+      }
     }
+  }
 
-    Box(modifier = modifier.fillMaxSize()) {
-        Box(modifier = Modifier
-            .align(Alignment.Center)
-            .fillMaxSize()
-            .background(Color.Black)
-            .drawBehind {
-                radialParticleEmitter.render(this, dt)
+  Box(modifier = modifier.fillMaxSize()) {
+    Box(
+        modifier =
+            Modifier.align(Alignment.Center).fillMaxSize().background(Color.Black).drawBehind {
+              radialParticleEmitter.render(this, dt)
             })
-    }
+  }
 }
 
 @Preview
 @Composable
 fun ParticleCirclePreview() {
-    ParticleScreen()
+  ParticleScreen()
 }
