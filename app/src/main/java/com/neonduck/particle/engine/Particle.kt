@@ -4,20 +4,20 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.neonduck.particle.engine.extensions.nextFloat
 import com.neonduck.particle.engine.extensions.toRadians
 import kotlin.math.cos
 import kotlin.math.sin
-import kotlin.random.Random
 
 data class Particle(
     private val position: ParticlePosition,
     private val angle: Float = 90f,
     private val speed: Float = 10f,
-    private val radius: Float = 5f,
-    private val maxLifetime: Float = Random.nextFloat(100f, 1500f),
+    private val maxRadius: Float = 5f,
+    private val maxLifetime: Float = 1000f,
     private val color: Color = Color.Black,
-    private val alpha: Float = 1f,
+    private val maxAlpha: Float = 1f,
+    private val decreaseSize: Boolean = false,
+    private val fadeOut: Boolean = false,
 ) {
 
   private val velocity: Offset =
@@ -27,6 +27,8 @@ data class Particle(
       )
 
   private var lifetime = maxLifetime
+  private var radius = maxRadius
+  private var alpha = maxAlpha
 
   private var x = 0f
   private var y = 0f
@@ -45,6 +47,15 @@ data class Particle(
     if (lifetime <= 0) {
       return
     }
+
+    val ageRatio = lifetime / maxLifetime
+    if (decreaseSize) {
+      radius = maxRadius * ageRatio
+    }
+    if (fadeOut) {
+      alpha = ageRatio
+    }
+
     x += velocity.x * dt
     y += velocity.y * dt
 

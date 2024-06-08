@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
 
 @Composable
 fun ParticleScreen(modifier: Modifier = Modifier) {
-  val radialParticleEmitter = remember { RadialParticleEmitter() }
+  val exampleParticleEmitter = remember { ExampleParticleEmitter() }
   var dt by remember { mutableFloatStateOf(0f) }
   var previousTime by remember { mutableLongStateOf(System.nanoTime()) }
 
@@ -40,7 +40,7 @@ fun ParticleScreen(modifier: Modifier = Modifier) {
     Box(
         modifier =
             Modifier.align(Alignment.Center).fillMaxSize().background(Color.Black).drawBehind {
-              radialParticleEmitter.render(this, dt)
+              exampleParticleEmitter.render(this, dt)
             })
   }
 }
