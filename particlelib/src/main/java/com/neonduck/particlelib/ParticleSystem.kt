@@ -1,4 +1,4 @@
-package com.neonduck.particle.engine
+package com.neonduck.particlelib
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -15,13 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 @Composable
-fun ParticleScreen(modifier: Modifier = Modifier) {
-  val exampleParticleEmitter = remember { ExampleParticleEmitter() }
+fun ParticleSystem(modifier: Modifier = Modifier, particleEmitter: ParticleEmitter) {
   var dt by remember { mutableFloatStateOf(0f) }
   var previousTime by remember { mutableLongStateOf(System.nanoTime()) }
 
@@ -40,13 +38,7 @@ fun ParticleScreen(modifier: Modifier = Modifier) {
     Box(
         modifier =
             Modifier.align(Alignment.Center).fillMaxSize().background(Color.Black).drawBehind {
-              exampleParticleEmitter.render(this, dt)
+              particleEmitter.render(this, dt)
             })
   }
-}
-
-@Preview
-@Composable
-fun ParticleCirclePreview() {
-  ParticleScreen()
 }

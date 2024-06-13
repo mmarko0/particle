@@ -1,4 +1,4 @@
-package com.neonduck.particle.engine.extensions
+package com.neonduck.particle.extensions
 
 import kotlin.random.Random
 

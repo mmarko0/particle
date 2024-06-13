@@ -1,8 +1,11 @@
-package com.neonduck.particle.engine
+package com.neonduck.particle.examples
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.neonduck.particle.engine.extensions.nextFloat
+import com.neonduck.particle.extensions.nextFloat
+import com.neonduck.particlelib.Particle
+import com.neonduck.particlelib.ParticleEmitter
+import com.neonduck.particlelib.ParticlePositionCenter
 import kotlin.math.min
 import kotlin.random.Random
 

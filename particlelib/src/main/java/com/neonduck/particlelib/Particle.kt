@@ -1,10 +1,10 @@
-package com.neonduck.particle.engine
+package com.neonduck.particlelib
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.neonduck.particle.engine.extensions.toRadians
+import com.neonduck.particlelib.extensions.toRadians
 import kotlin.math.cos
 import kotlin.math.sin
 

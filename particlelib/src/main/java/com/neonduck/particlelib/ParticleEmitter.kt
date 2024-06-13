@@ -1,4 +1,4 @@
-package com.neonduck.particle.engine
+package com.neonduck.particlelib
 
 import androidx.compose.ui.graphics.drawscope.DrawScope
 

@@ -1,4 +1,4 @@
-package com.neonduck.particle.engine
+package com.neonduck.particlelib
 
 sealed class ParticlePosition
 
